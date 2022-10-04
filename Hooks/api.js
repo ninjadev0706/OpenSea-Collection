@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
 
-const WALLET_ADDRESS = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D';
-
 export const useNFTCollection = () => {
     const [assets, setAssets] = useState(null)
     const handleData = useCallback(
