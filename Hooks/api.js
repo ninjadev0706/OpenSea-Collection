@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 
-export const useNFTCollection = () => {
+const useNFTCollection = () => {
     const [assets, setAssets] = useState(null)
     const handleData = useCallback(
         async(nextcursor) => {
@@ -34,3 +34,5 @@ export const useNFTCollection = () => {
 
     return {fetchData: handleData, assets};
 } 
+
+export default useNFTCollection
