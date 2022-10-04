@@ -7,7 +7,6 @@ const useNFTCollection = () => {
             if(!nextcursor) {
                 return;
             }
-            console.log(nextcursor)
             try {
                 const options = {
                     method: 'GET',

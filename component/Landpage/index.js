@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAccount } from 'wagmi'
 import { Box } from "@chakra-ui/react";
 
-import useNFTCollection from '../../hooks/api';
+import useNFTCollection from 'hooks/api'
 import DisplayNFT from "./display";
 
 export default function Home() {
