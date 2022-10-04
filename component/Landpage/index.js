@@ -12,10 +12,18 @@ export default function Home() {
   const [collectiondata, setCollectionData] = useState([]);
 
   const { fetchData, assets } = useNFTCollection();
-  const { address, isConnecting, isDisconnected } = useAccount()
+  const [{ data: accountData }, disconnect] = useAccount({
+    fetchEns: true,
+  });
 
   const total_supply = 10000;
   const perlength = 20;
+
+  useEffect(() => {
+    if(accountData) {
+      console.log(accountData)
+    }
+  }, [accountData])
 
   useEffect(() => {
     if (!assets) {
@@ -28,17 +36,14 @@ export default function Home() {
     setLength(length + perlength);
   }
 
-  console.log(address, isConnecting, isDisconnected)
-
   return (
     <Box px={50} py={10} mx="auto">
       {
-        address &&
+        accountData ?
         <DisplayNFT collectiondata={collectiondata} length={length} NextData={NextData} assets={assets} setNextCursor={setNextCursor} setCollectionData={setCollectionData} />
+        :
+        <>plz connect wallet</>
       }
     </Box>
   );
-
-
-
 }
