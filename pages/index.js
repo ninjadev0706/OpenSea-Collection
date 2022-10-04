@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <Box>
       <Head>
-        <title> Clean Code</title>
+        <title>BAYC NFT</title>
         <meta name="description" content="Web3.0 " />
         <link rel="icon" href="/favicon.ico" />
       </Head>
