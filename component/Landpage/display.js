@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { ethers } from 'ethers';
 import {
     Box,
     Image,
@@ -24,6 +25,8 @@ export default function DisplayNFT(props) {
         }
     }, [assets])
 
+    console.log(collectiondata)
+
     return (
         <InfiniteScroll
             dataLength={length}
@@ -38,16 +41,15 @@ export default function DisplayNFT(props) {
         >
             <SimpleGrid minChildWidth='270px' spacing='40px'>
                 {
-                    collectiondata && collectiondata.map((e, i) => {
+                    collectiondata && collectiondata.map((item, i) => {
                         if (i == 0 || i == 1)
                             return
-                        return (
-                            <Box w='100%' h='100%' p={5} border='1px' borderColor='gray.400' key={i} textAlign="center" >
-                                <Image src={e.image_url} _hover={{ transform: "scale(1.03)", }} transition={"0.2s ease-in-out"} alt='Dan Abramov' textAlign="center" />
-                                <p>{e.token_id}</p>
+                        return item && (
+                            <Box w='100%' h='100%' p={5} border='1px' borderColor='gray.400' borderRadius="10px" key={i} textAlign="center" >
+                                <Image src={item.image_url} _hover={{ transform: "scale(1.03)", }} transition={"0.2s ease-in-out"} alt='Dan Abramov' textAlign="center" />
                                 <Stat>
-                                    <StatNumber>£0.00</StatNumber>
-                                    <StatHelpText>Feb 12 - Feb 28</StatHelpText>
+                                    <StatNumber>{item?.token_id}</StatNumber>
+                                    <StatHelpText>owner: {item?.owner?.user?.username}</StatHelpText>
                                 </Stat>
                             </Box>
                         );

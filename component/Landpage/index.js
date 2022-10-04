@@ -16,7 +16,6 @@ export default function Home() {
     fetchEns: true,
   });
 
-  const total_supply = 10000;
   const perlength = 20;
 
   useEffect(() => {

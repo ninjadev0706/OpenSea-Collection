@@ -23,11 +23,9 @@ import {
 } from "@chakra-ui/react";
 
 import { WalletModel } from "..";
-
-//import { Logo } from "../../public"
-
 import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { Router, useRouter  } from "next/router";
 
 export default function Navbar() {
   const bg = useColorModeValue("white", "gray.800");
@@ -39,6 +37,8 @@ export default function Navbar() {
 
   // Button bgColor
   const bgColor = useColorModeValue("blue.100", "blue.500");
+
+  const router = useRouter()
 
   return (
     <Box shadow="2xl" borderRadius="3xl">
@@ -106,11 +106,10 @@ export default function Navbar() {
               display="flex"
               alignItems="center"
             >
-              {/* <Logo /> */}
-              <VisuallyHidden>NCW Starter</VisuallyHidden>
+              <VisuallyHidden>BAYC Starter</VisuallyHidden>
             </chakra.a>
             <chakra.h1 fontWeight="semibold" fontSize="2xl">
-              NCW
+              B A Y C
             </chakra.h1>
           </HStack>
           <HStack spacing={3} display="flex" alignItems="center">
@@ -155,14 +154,10 @@ export default function Navbar() {
               py={4}
               m={0}
               _focus={{ boxShadow: "none" }}
-            >
-              Overview
-            </Tab>
-            <Tab
-              fontWeight="semibold"
-              py={4}
-              m={0}
-              _focus={{ boxShadow: "none" }}
+              onClick={(e) => {
+                e.preventDefault();
+                router.push('/')
+              }}
             >
               Dashboard
             </Tab>
@@ -171,17 +166,13 @@ export default function Navbar() {
               py={4}
               m={0}
               _focus={{ boxShadow: "none" }}
+              onClick={(e) => {
+                e.preventDefault();
+                router.push('/wallet')
+              }}
             >
               Wallet
             </Tab>
-            <Tab
-              fontWeight="semibold"
-              py={4}
-              m={0}
-              _focus={{ boxShadow: "none" }}
-            >
-              Transaction
-            </Tab>{" "}
           </TabList>
         </Tabs>
       </Flex>
