@@ -1,5 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import  { useState, useCallback } from 'react'
 
+/**
+ * get Collection with Opensea api
+*/
 const useNFTCollection = () => {
     const [assets, setAssets] = useState(null)
     const handleData = useCallback(
@@ -13,7 +16,6 @@ const useNFTCollection = () => {
                     headers: {
                         Accept: 'application/json',
                         'X-API-KEY': "7825c4057b6044719021ed683c40ddf9",
-                        
                     }
                 };
                 const response = await fetch(`https://api.opensea.io/api/v1/assets/?cursor=${nextcursor}&order_direction=desc&limit=20&include_orders=false&asset_contract_addresses=0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D`, options)
@@ -23,14 +25,12 @@ const useNFTCollection = () => {
                 if (res) {
                     setAssets(res)
                 }
-    
                 return assets;
             } catch (error) {
-                console.error('Unable to fetch price data:', error)
+                console.error('Unable to fetch asset data:', error)
             }
         }
     )
-
     return {fetchData: handleData, assets};
 } 
 

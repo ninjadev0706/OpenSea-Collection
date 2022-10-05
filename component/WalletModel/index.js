@@ -28,10 +28,8 @@ export default function WalletModel() {
     fetchEns: true,
   });
 
-  // bgColor
   const bg = useColorModeValue("white", "gray.800");
 
-  // Button bgColor
   const bgColor = useColorModeValue("blue.200", "blue.500");
 
   // Fetching balance information

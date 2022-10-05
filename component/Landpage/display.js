@@ -1,19 +1,23 @@
 import React, { useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { ethers } from 'ethers';
+
 import {
     Box,
     Image,
     Stat,
     StatNumber,
     StatHelpText,
-    SimpleGrid
+    SimpleGrid,
 } from "@chakra-ui/react";
 
+/**
+ * get Collection data with nextCursor 
+ */
 export default function DisplayNFT(props) {
 
     const { NextData, length, assets, setNextCursor, collectiondata } = props;
 
+    
     useEffect(() => {
         if (assets) {
             setNextCursor(assets.next);
@@ -57,5 +61,6 @@ export default function DisplayNFT(props) {
                 }
             </SimpleGrid>
         </InfiniteScroll>
+
     );
 }

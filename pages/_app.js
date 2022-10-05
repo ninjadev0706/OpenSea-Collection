@@ -4,7 +4,7 @@ import { InjectedConnector } from "wagmi/connectors/injected";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { WalletLinkConnector } from "wagmi/connectors/walletLink";
 
-// API key for Ethereum node
+
 // services are Infura (infura.io)
 const infuraId = process.env.INFURA_ID;
 

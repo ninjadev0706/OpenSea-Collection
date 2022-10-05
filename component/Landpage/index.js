@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAccount } from 'wagmi'
-import { Box } from "@chakra-ui/react";
+import { Box, Alert, AlertIcon, AlertTitle, AlertDescription,} from "@chakra-ui/react";
 
 import useNFTCollection from '../../hooks/hooks'
 import DisplayNFT from "./display";
@@ -19,7 +19,7 @@ export default function Home() {
   const perlength = 20;
 
   useEffect(() => {
-    if(accountData) {
+    if (accountData) {
       console.log(accountData)
     }
   }, [accountData])
@@ -39,9 +39,13 @@ export default function Home() {
     <Box px={50} py={10} mx="auto">
       {
         accountData ?
-        <DisplayNFT collectiondata={collectiondata} length={length} NextData={NextData} assets={assets} setNextCursor={setNextCursor} setCollectionData={setCollectionData} />
-        :
-        <>plz connect wallet</>
+          <DisplayNFT collectiondata={collectiondata} length={length} NextData={NextData} assets={assets} setNextCursor={setNextCursor} setCollectionData={setCollectionData} />
+          :
+          <Alert status='error'>
+            <AlertIcon />
+            <AlertTitle>Connect your Wallet!</AlertTitle>
+            <AlertDescription>Please connect your wallet.Your browser doesn't have the wallet.</AlertDescription>
+          </Alert>
       }
     </Box>
   );

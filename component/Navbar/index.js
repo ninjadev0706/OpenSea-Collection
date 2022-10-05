@@ -12,9 +12,6 @@ import {
   VStack,
   IconButton,
   CloseButton,
-  InputGroup,
-  InputLeftElement,
-  Input,
   Tabs,
   TabList,
   Tab,
@@ -25,9 +22,10 @@ import {
 import { WalletModel } from "..";
 import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import { FaMoon, FaSun } from "react-icons/fa";
-import { Router, useRouter  } from "next/router";
+import { Router, useRouter } from "next/router";
 
 export default function Navbar() {
+
   const bg = useColorModeValue("white", "gray.800");
   const mobileNav = useDisclosure();
 
@@ -35,10 +33,11 @@ export default function Navbar() {
   const text = useColorModeValue("dark", "light");
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
 
-  // Button bgColor
+  
   const bgColor = useColorModeValue("blue.100", "blue.500");
 
-  const router = useRouter()
+  const router = useRouter();
+  console.log("router", router.pathname);
 
   return (
     <Box shadow="2xl" borderRadius="3xl">
@@ -50,7 +49,7 @@ export default function Navbar() {
         px={{ base: 2, sm: 4 }}
         py={4}
       >
-        {/* MobileNav - setting */}
+
         <Flex alignItems="center" justifyContent="space-between" mx="auto">
           <HStack spacing={4} display="flex" alignItems="center">
             <Box display={{ base: "inline-flex", md: "none" }}>
@@ -147,7 +146,7 @@ export default function Navbar() {
         borderWidth={0}
         overflowX="auto"
       >
-        <Tabs defaultIndex={1} borderBottomColor="transparent">
+        <Tabs borderBottomColor="transparent" index={router.pathname == "/collections" ? 1 : 0}>
           <TabList>
             <Tab
               fontWeight="semibold"
@@ -164,14 +163,14 @@ export default function Navbar() {
             <Tab
               fontWeight="semibold"
               py={4}
-              m={0}
+              m={0}    
               _focus={{ boxShadow: "none" }}
               onClick={(e) => {
                 e.preventDefault();
-                router.push('/wallet')
+                router.push('/collections')
               }}
             >
-              Wallet
+              Collections
             </Tab>
           </TabList>
         </Tabs>
