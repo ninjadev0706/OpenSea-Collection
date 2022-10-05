@@ -16,6 +16,7 @@ export default function Home() {
     fetchEns: true,
   });
 
+  // new NFT number when scroll down
   const perlength = 20;
 
   useEffect(() => {
@@ -24,12 +25,14 @@ export default function Home() {
     }
   }, [accountData])
 
+  //run when first loading
   useEffect(() => {
     if (!assets) {
       NextData();
     }
   }, [])
 
+  // function for getting nex NFTs by nextcursor
   const NextData = () => {
     fetchData(nextCursor);
     setLength(length + perlength);
@@ -38,6 +41,7 @@ export default function Home() {
   return (
     <Box px={50} py={10} mx="auto">
       {
+        // confirm wallet status
         accountData ?
           <DisplayNFT collectiondata={collectiondata} length={length} NextData={NextData} assets={assets} setNextCursor={setNextCursor} setCollectionData={setCollectionData} />
           :

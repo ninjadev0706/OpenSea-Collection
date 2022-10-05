@@ -17,6 +17,7 @@ export default function DisplayNFT(props) {
 
     const { NextData, length, assets, setNextCursor, collectiondata } = props;
 
+    // display new NFTs with old NFTs 
     
     useEffect(() => {
         if (assets) {
@@ -28,8 +29,6 @@ export default function DisplayNFT(props) {
             })
         }
     }, [assets])
-
-    console.log(collectiondata)
 
     return (
         <InfiniteScroll
@@ -53,7 +52,7 @@ export default function DisplayNFT(props) {
                                 <Image src={item.image_url} _hover={{ transform: "scale(1.03)", }} transition={"0.2s ease-in-out"} alt='Dan Abramov' textAlign="center" />
                                 <Stat>
                                     <StatNumber>{item?.token_id}</StatNumber>
-                                    <StatHelpText>owner: {item?.owner?.user?.username}</StatHelpText>
+                                    <StatHelpText>owner: {item?.owner?.user?.username? item?.owner?.user?.username : 'contract'}</StatHelpText>
                                 </Stat>
                             </Box>
                         );
