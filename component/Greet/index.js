@@ -33,7 +33,7 @@ export default function Home() {
                         bgGradient="linear(to-r, green.400,purple.500)"
                         fontWeight="extrabold"
                     >
-                        SYAC Collection.
+                        BAYC Collection.
                     </Text>{" "}
                     in one single place.
                 </chakra.h1>
